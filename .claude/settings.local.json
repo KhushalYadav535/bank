@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(Select-Object -First 20)",
+      "Bash(Remove-Item \"c:\\\\Users\\\\khush\\\\OneDrive\\\\Desktop\\\\mns-bank\\\\src\\\\components\\\\home\\\\NewsSection.tsx\", \"c:\\\\Users\\\\khush\\\\OneDrive\\\\Desktop\\\\mns-bank\\\\src\\\\components\\\\home\\\\RateCards.tsx\", \"c:\\\\Users\\\\khush\\\\OneDrive\\\\Desktop\\\\mns-bank\\\\src\\\\components\\\\home\\\\CtaSections.tsx\", \"c:\\\\Users\\\\khush\\\\OneDrive\\\\Desktop\\\\mns-bank\\\\src\\\\components\\\\home\\\\FraudTicker.tsx\", \"c:\\\\Users\\\\khush\\\\OneDrive\\\\Desktop\\\\mns-bank\\\\src\\\\components\\\\home\\\\ProductGrid.tsx\", \"c:\\\\Users\\\\khush\\\\OneDrive\\\\Desktop\\\\mns-bank\\\\src\\\\components\\\\home\\\\StatBar.tsx\" -Force)",
+      "WebSearch",
+      "Bash(npx tsc *)",
+      "PowerShell(npx tsc --noEmit -p \"c:\\\\Users\\\\khush\\\\OneDrive\\\\Desktop\\\\mns-bank\")"
+    ]
+  }
+}
