@@ -4,6 +4,7 @@ import { AnimatePresence } from "framer-motion";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -51,13 +52,15 @@ export default function RootLayout({
         <a href="#main-content" className="skip-to-content">
           Skip to main content
         </a>
-        <Navbar />
-        <main id="main-content" className="flex-1 pt-20">
-          <AnimatePresence mode="wait">
-            {children}
-          </AnimatePresence>
-        </main>
-        <Footer />
+        <SmoothScrollProvider>
+          <Navbar />
+          <main id="main-content" className="flex-1 pt-20">
+            <AnimatePresence mode="wait">
+              {children}
+            </AnimatePresence>
+          </main>
+          <Footer />
+        </SmoothScrollProvider>
       </body>
     </html>
   );

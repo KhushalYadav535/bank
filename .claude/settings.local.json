@@ -6,7 +6,11 @@
       "Bash(Remove-Item \"c:\\\\Users\\\\khush\\\\OneDrive\\\\Desktop\\\\mns-bank\\\\src\\\\components\\\\home\\\\NewsSection.tsx\", \"c:\\\\Users\\\\khush\\\\OneDrive\\\\Desktop\\\\mns-bank\\\\src\\\\components\\\\home\\\\RateCards.tsx\", \"c:\\\\Users\\\\khush\\\\OneDrive\\\\Desktop\\\\mns-bank\\\\src\\\\components\\\\home\\\\CtaSections.tsx\", \"c:\\\\Users\\\\khush\\\\OneDrive\\\\Desktop\\\\mns-bank\\\\src\\\\components\\\\home\\\\FraudTicker.tsx\", \"c:\\\\Users\\\\khush\\\\OneDrive\\\\Desktop\\\\mns-bank\\\\src\\\\components\\\\home\\\\ProductGrid.tsx\", \"c:\\\\Users\\\\khush\\\\OneDrive\\\\Desktop\\\\mns-bank\\\\src\\\\components\\\\home\\\\StatBar.tsx\" -Force)",
       "WebSearch",
       "Bash(npx tsc *)",
-      "PowerShell(npx tsc --noEmit -p \"c:\\\\Users\\\\khush\\\\OneDrive\\\\Desktop\\\\mns-bank\")"
+      "PowerShell(npx tsc --noEmit -p \"c:\\\\Users\\\\khush\\\\OneDrive\\\\Desktop\\\\mns-bank\")",
+      "Bash(Start-Sleep -Seconds 5)",
+      "Bash(Get-Content \"C:\\\\Users\\\\khush\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-khush-OneDrive-Desktop-mns-bank\\\\cd35c6ae-b390-415e-98c9-d66abd2d4c88\\\\tasks\\\\b0d2dbpw7.output\")",
+      "Bash(Select-Object -Last 30)",
+      "Bash(Get-Content \"c:\\\\Users\\\\khush\\\\OneDrive\\\\Desktop\\\\mns-bank\\\\src\\\\components\\\\3d\\\\ThreeDBackground.tsx\")"
     ]
   }
 }

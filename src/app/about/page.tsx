@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { AnimatedCard, CardTitle, CardDescription } from "@/components/shared/AnimatedCard";
 import { PremiumButton } from "@/components/shared/PremiumButton";
 import { BANK } from "@/lib/constants";
+import { DNABackgroundScene } from "@/components/3d";
 import { ArrowRight, Calendar, Users, Award, Target, Eye, Shield, Star, Building2 } from "lucide-react";
 import Link from "next/link";
 
@@ -37,11 +38,17 @@ const awards = [
 export default function AboutPage() {
   return (
     <main id="main-content" className="min-h-screen">
-      <Navbar />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-gradient-to-br from-crimson-dark via-crimson to-crimson-light overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-20" />
+        <DNABackgroundScene />
+
+        {/* Animated gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-crimson-dark/90 via-crimson/80 to-crimson-light/90" />
+
+        {/* Decorative orbs */}
+        <div className="absolute top-20 right-20 w-72 h-72 bg-gold/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-crimson/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
 
         <div className="container-premium relative z-10">
           <motion.div
@@ -49,31 +56,54 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-xs font-medium tracking-[0.15em] uppercase text-gold mb-4 inline-block">
+            <span className="text-xs font-medium tracking-[0.15em] uppercase text-gold mb-4 inline-block px-4 py-2 bg-gold/20 rounded-full backdrop-blur-sm">
               Our Heritage
             </span>
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight max-w-4xl">
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight max-w-4xl drop-shadow-lg">
               Six Decades of Community Banking
             </h1>
-            <p className="mt-6 text-xl text-white/80 max-w-2xl leading-relaxed">
+            <p className="mt-6 text-xl text-white/90 max-w-2xl leading-relaxed">
               Since 1965, {BANK.name} has been the trusted financial partner for Bhopal's
               families, businesses, and communities.
             </p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="mt-8 flex gap-4"
+            >
+              <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-crimson font-semibold rounded-full hover:bg-white/90 transition-all hover:scale-105 hover:shadow-xl">
+                Join Us <ArrowRight className="w-4 h-4" />
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
 
-        {/* Decorative element */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-ivory to-transparent" />
+        {/* Animated bottom gradient */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-ivory via-transparent to-transparent" />
+
+        {/* Scroll indicator */}
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+          className="absolute bottom-16 left-1/2 -translate-x-1/2 z-10"
+        >
+          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center pt-2">
+            <div className="w-1.5 h-3 bg-white/50 rounded-full" />
+          </div>
+        </motion.div>
       </section>
 
       {/* Our Story / Timeline */}
       <section className="section-padding bg-ivory">
         <div className="container-premium">
-          <SectionHeader
-            eyebrow="Our Journey"
-            title="Our Story"
-            subtitle="From humble beginnings to becoming one of Bhopal's most trusted cooperative banks, our journey reflects our commitment to community banking."
-          />
+          <ScrollReveal animation="fade-up">
+            <SectionHeader
+              eyebrow="Our Journey"
+              title="Our Story"
+              subtitle="From humble beginnings to becoming one of Bhopal's most trusted cooperative banks, our journey reflects our commitment to community banking."
+            />
+          </ScrollReveal>
 
           <div className="mt-16 relative">
             {/* Timeline line */}
@@ -123,12 +153,7 @@ export default function AboutPage() {
         <div className="container-premium">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Mission */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
+            <ScrollReveal animation="slide-right" delay={0.1}>
               <AnimatedCard variant="default">
                 <div className="w-16 h-16 rounded-2xl bg-crimson/10 flex items-center justify-center mb-6">
                   <Target className="w-8 h-8 text-crimson" />
@@ -140,15 +165,10 @@ export default function AboutPage() {
                   governance and customer service.
                 </CardDescription>
               </AnimatedCard>
-            </motion.div>
+            </ScrollReveal>
 
             {/* Vision */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
+            <ScrollReveal animation="slide-left" delay={0.2}>
               <AnimatedCard variant="default">
                 <div className="w-16 h-16 rounded-2xl bg-gold/20 flex items-center justify-center mb-6">
                   <Eye className="w-8 h-8 text-gold" />
@@ -160,7 +180,7 @@ export default function AboutPage() {
                   neighbourhood banking.
                 </CardDescription>
               </AnimatedCard>
-            </motion.div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -168,21 +188,17 @@ export default function AboutPage() {
       {/* Board of Directors */}
       <section id="board" className="section-padding bg-ivory">
         <div className="container-premium">
-          <SectionHeader
-            eyebrow="Leadership"
-            title="Board of Directors"
-            subtitle="Meet the dedicated team guiding MNS Bank towards continued excellence."
-          />
+          <ScrollReveal animation="fade-up">
+            <SectionHeader
+              eyebrow="Leadership"
+              title="Board of Directors"
+              subtitle="Meet the dedicated team guiding MNS Bank towards continued excellence."
+            />
+          </ScrollReveal>
 
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {boardMembers.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
+              <ScrollReveal key={member.name} animation="fade-up" delay={index * 0.1}>
                 <AnimatedCard variant="default">
                   <div className="flex items-center gap-4">
                     <div className="w-16 h-16 rounded-full bg-gradient-to-br from-crimson to-crimson-light flex items-center justify-center">
@@ -195,7 +211,7 @@ export default function AboutPage() {
                     </div>
                   </div>
                 </AnimatedCard>
-              </motion.div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -204,22 +220,18 @@ export default function AboutPage() {
       {/* Awards & Recognition */}
       <section id="awards" className="section-padding bg-charcoal">
         <div className="container-premium">
-          <SectionHeader
-            eyebrow="Recognition"
-            title="Awards & Recognition"
-            subtitle="Our commitment to excellence has been recognized by industry bodies."
-            light
-          />
+          <ScrollReveal animation="fade-up">
+            <SectionHeader
+              eyebrow="Recognition"
+              title="Awards & Recognition"
+              subtitle="Our commitment to excellence has been recognized by industry bodies."
+              light
+            />
+          </ScrollReveal>
 
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
             {awards.map((award, index) => (
-              <motion.div
-                key={award.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
+              <ScrollReveal key={award.title} animation="scale" delay={index * 0.15}>
                 <AnimatedCard variant="stat">
                   <div className="flex items-center gap-3 mb-4">
                     <Star className="w-6 h-6 text-gold" />
@@ -228,7 +240,7 @@ export default function AboutPage() {
                   <h3 className="font-display text-xl font-semibold text-white">{award.title}</h3>
                   <p className="text-sm text-white/70 mt-2">{award.issuer}</p>
                 </AnimatedCard>
-              </motion.div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -259,7 +271,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

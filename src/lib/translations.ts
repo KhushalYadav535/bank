@@ -1,9 +1,7 @@
 // English to Hindi translations for common UI elements
 // This can be expanded to include all page content translations
 
-export type TranslationKey = keyof typeof en;
-
-export const translations = {
+const translations = {
   en: {
     // Navigation
     home: "Home",
@@ -53,10 +51,6 @@ export const translations = {
     quickLinks: "Quick Links",
     legal: "Legal",
     followUs: "Follow Us",
-
-    // Hero Sections
-    learnMore: "Learn More",
-    applyNow: "Apply Now",
     bookNow: "Book Now",
 
     // Form Labels
@@ -66,7 +60,7 @@ export const translations = {
     address: "Address",
     message: "Message",
   },
-  hi: {
+  hindi: {
     // Navigation
     home: "होम",
     about: "हमारे बारे में",
@@ -115,10 +109,6 @@ export const translations = {
     quickLinks: "त्वरित लिंक",
     legal: "कानूनी",
     followUs: "हमारा अनुसरण करें",
-
-    // Hero Sections
-    learnMore: "और जानें",
-    applyNow: "अभी आवेदन करें",
     bookNow: "अभी बुक करें",
 
     // Form Labels
@@ -128,8 +118,9 @@ export const translations = {
     address: "पता",
     message: "संदेश",
   },
-} as const;
+};
 
+export type TranslationKey = keyof typeof translations.en;
 export type Language = keyof typeof translations;
 
 export function getTranslation(key: TranslationKey, language: Language = "en"): string {
@@ -145,7 +136,7 @@ export function useTranslation(language: Language = "en") {
 }
 
 // Hindi labels for common page sections
-export const hi = {
+export const hindiLabels = {
   nav: {
     home: "होम",
     about: "हमारे बारे में",
