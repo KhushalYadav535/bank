@@ -2,8 +2,8 @@
 
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
-import { motion } from "framer-motion";
-import { forwardRef, type ButtonHTMLAttributes } from "react";
+import { motion, type HTMLMotionProps } from "framer-motion";
+import { forwardRef } from "react";
 import { Loader2, ArrowRight, Check } from "lucide-react";
 
 const buttonVariants = cva(
@@ -35,7 +35,7 @@ const buttonVariants = cva(
   }
 );
 
-interface PremiumButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+interface PremiumButtonProps extends HTMLMotionProps<"button">, VariantProps<typeof buttonVariants> {
   isLoading?: boolean;
   isSuccess?: boolean;
   leftIcon?: React.ReactNode;
@@ -103,7 +103,7 @@ const PremiumButton = forwardRef<HTMLButtonElement, PremiumButtonProps>(
 PremiumButton.displayName = "PremiumButton";
 
 // Floating action button
-interface FABProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface FABProps extends HTMLMotionProps<"button"> {
   icon?: React.ReactNode;
   label?: string;
 }
@@ -157,7 +157,7 @@ const iconButtonVariants = cva(
   }
 );
 
-interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof iconButtonVariants> {
+interface IconButtonProps extends HTMLMotionProps<"button">, VariantProps<typeof iconButtonVariants> {
   icon: React.ReactNode;
 }
 
