@@ -81,7 +81,7 @@ const PremiumButton = forwardRef<HTMLButtonElement, PremiumButtonProps>(
           <span className="relative z-10 shrink-0" aria-hidden="true">{leftIcon}</span>
         ) : null}
 
-        <span className="relative z-10">{children}</span>
+        <motion.span className="relative z-10">{children}</motion.span>
 
         {(rightIcon || showArrow) && !isLoading && !isSuccess && (
           <motion.span
