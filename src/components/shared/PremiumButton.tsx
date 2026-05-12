@@ -35,7 +35,8 @@ const buttonVariants = cva(
   }
 );
 
-interface PremiumButtonProps extends HTMLMotionProps<"button">, VariantProps<typeof buttonVariants> {
+interface PremiumButtonProps extends Omit<HTMLMotionProps<"button">, "children">, VariantProps<typeof buttonVariants> {
+  children?: React.ReactNode;
   isLoading?: boolean;
   isSuccess?: boolean;
   leftIcon?: React.ReactNode;
@@ -81,7 +82,7 @@ const PremiumButton = forwardRef<HTMLButtonElement, PremiumButtonProps>(
           <span className="relative z-10 shrink-0" aria-hidden="true">{leftIcon}</span>
         ) : null}
 
-        <motion.span className="relative z-10">{children}</motion.span>
+        <span className="relative z-10">{children}</span>
 
         {(rightIcon || showArrow) && !isLoading && !isSuccess && (
           <motion.span
@@ -103,7 +104,8 @@ const PremiumButton = forwardRef<HTMLButtonElement, PremiumButtonProps>(
 PremiumButton.displayName = "PremiumButton";
 
 // Floating action button
-interface FABProps extends HTMLMotionProps<"button"> {
+interface FABProps extends Omit<HTMLMotionProps<"button">, "children"> {
+  children?: React.ReactNode;
   icon?: React.ReactNode;
   label?: string;
 }
@@ -157,7 +159,8 @@ const iconButtonVariants = cva(
   }
 );
 
-interface IconButtonProps extends HTMLMotionProps<"button">, VariantProps<typeof iconButtonVariants> {
+interface IconButtonProps extends Omit<HTMLMotionProps<"button">, "children">, VariantProps<typeof iconButtonVariants> {
+  children?: React.ReactNode;
   icon: React.ReactNode;
 }
 
